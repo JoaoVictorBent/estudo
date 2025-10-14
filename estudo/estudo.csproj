@@ -61,14 +61,25 @@
     </ItemGroup>
 
     <ItemGroup>
+      <AndroidResource Remove="wwwroot\css\bootstrap - Cópia\**" />
+      <AndroidResource Remove="wwwroot\css\bootstrap\**" />
       <AndroidResource Remove="wwwroot\NovaPasta\**" />
+      <Compile Remove="wwwroot\css\bootstrap - Cópia\**" />
+      <Compile Remove="wwwroot\css\bootstrap\**" />
       <Compile Remove="wwwroot\NovaPasta\**" />
+      <Content Remove="wwwroot\css\bootstrap - Cópia\**" />
+      <Content Remove="wwwroot\css\bootstrap\**" />
       <Content Remove="wwwroot\NovaPasta\**" />
+      <EmbeddedResource Remove="wwwroot\css\bootstrap - Cópia\**" />
+      <EmbeddedResource Remove="wwwroot\css\bootstrap\**" />
       <EmbeddedResource Remove="wwwroot\NovaPasta\**" />
+      <None Remove="wwwroot\css\bootstrap - Cópia\**" />
+      <None Remove="wwwroot\css\bootstrap\**" />
       <None Remove="wwwroot\NovaPasta\**" />
     </ItemGroup>
 
     <ItemGroup>
+      <Content Remove="Components\Layout\Component1.razor" />
       <Content Remove="Components\Pages\Counter.razor" />
       <Content Remove="Components\Pages\Weather.razor" />
     </ItemGroup>

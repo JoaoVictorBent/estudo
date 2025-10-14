@@ -1,0 +1,139 @@
+﻿html, body, #app {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #f5f5f5;
+}
+
+.main-container {
+
+    background: #f5f5f5;
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+.top-bar{
+
+    background: #ffe066;
+
+    height: 8vh;
+
+    max-height: 8vh;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 2% 0 1%;
+
+    position: relative;
+
+}
+
+.icon-btn {
+    
+    background-color: red;
+    
+    border: none;
+
+    height: 70%;
+
+    max-height: 70%;
+
+}
+
+.menu{
+
+   max-height: 100%
+
+}
+
+right-icons {
+    
+    display: flex;
+    
+    align-items: center;
+    
+    gap: 16px;
+
+}
+
+.profile-circle {
+    
+    width: 28px;
+    
+    height: 28px;
+    
+    background: #fff;
+    
+    border-radius: 50%;
+    
+    border: 1px solid #ccc;
+
+}
+
+.cover-photo {
+    
+    background: #ccc;
+    
+    height: 120px;
+    
+    position: relative;
+
+}
+
+.profile-photo {
+     
+    width: 100px;
+    
+    height: 100px;
+    
+    background: #fff;
+    
+    border-radius: 50%;
+    
+    border: 3px solid #fff;
+    
+    position: absolute;
+    
+    bottom: -50px;
+    
+    left: 16px;
+
+}
+
+.info-card {
+    
+    background: #fff;
+    
+    border-radius: 32px 32px 0 0;
+    
+    margin-top: -40px;
+    
+    padding: 32px 16px 16px 16px;
+    
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    
+    position: relative;
+    
+    z-index: 1;
+    
+    text-align: center;
+
+}
+
+.restaurant-name {
+    
+    font-family: 'Cursive', serif;
+    
+    font-size: 2rem;
+    
+    margin-bottom: 8px;
+
+}
+

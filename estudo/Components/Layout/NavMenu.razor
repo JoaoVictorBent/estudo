@@ -1,28 +1,16 @@
 ﻿<nav @attributes="AdditionalAttributes" class="nav-menu">
     
-    <div class="menu">
+    <img src="images/menu_aberto.png" class="icon_menu" />
 
-        <img src="images/menu_aberto.png" class="icon_menu" />
+    <img src="images/bolsa_compras.png" class="icon_compras" />
 
-    </div>
-
-    <div class="vazio"></div>
-
-    <div class="compras">
-
-        <img src="images/bolsa_compras.png" class="icon_compras" />
-
-    </div>
-
-    <div class="perfil">
-    
-    </div>
+    <img src="images/download1.jpeg" class="icon_perfil"/>
 
 </nav>
 
 @code {
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object> AdditionalAttributes { get; set; }
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 }
 
 

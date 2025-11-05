@@ -1,21 +1,142 @@
 ﻿@page "/"
 
-<div class="main-container">
+<!-- corpo geral -->
 
+<div class="main-container">
 
     <!-- Capa -->
 
-    <div class="cover-photo">
+    <img src="images/download2.jpeg" class="capa"/>
 
-        <div class="profile-photo"></div>
+    <!-- Avatar  -->
 
-    </div>
+    <img src="images/download1.jpeg" class="avatar"/>
 
-    <!-- Borda sobreposta a capa com informações -->
+    <!-- corpo com informaçoes -->
 
-    <div class="info-card">
+    <div class="body-home">
 
-        <h2 class="restaurant-name"> Yukki Sushi </h2>
+        <!-- nome do restaurante -->
+
+        <h1> Yukki Sushi </h1>
+
+        <!-- linha 1 -->
+
+        <div class="row1">
+
+            <div class="row1-1">
+
+                <img src="images/money_bag.png" class="icon" />
+
+                <p> Pedido mín R$20,00 </p>
+
+            </div>
+
+            <!-- traço -->
+
+            <div class="traco"></div>
+
+            <div class="row1-2">
+
+                <img src="images/entrega.png" class="icon" />
+
+                <p> 30 - 50 min • <span class="gratis"> grátis </span></p>
+
+            </div>
+
+        </div>
+
+        <!-- linha 2 -->
+
+        <div class="row2">
+
+            <img src="images/pin.png" class="icon" />
+
+            <p>Capão da canoa - RS ● 1,8km de você!</p>
+
+        </div>
+
+        <!-- linha 3 -->
+
+        <div class="row3">
+
+            <img src="images/estrela.png" class="icon" />
+
+            <p> 4,8 (1.234 avaliações) </p>
+
+        </div>
+
+        <!-- linha 4 -->
+
+        <div class="row4">
+
+            <img src="images/camera.png" class="icon-camera" />
+
+            <img src="images/info.png" class="icon-info" />
+
+        </div>
+
+        <Carousel Items="@Produtos" IsInfinite="true" First="true" Color="true">
+            
+            <Template Context="produto">
+                
+                <div class="carousel-item">
+                    
+                    <img src="@produto.Imagem" alt="@produto.Nome" />
+                    
+                    <p>@produto.Nome</p>
+                
+                </div>
+            
+            </Template>
+        
+        </Carousel>
+
+        <Carousel Items="@Produtos" IsInfinite="true">
+
+            <Template Context="produto">
+
+                <div class="carousel-item">
+
+                    <img src="@produto.Imagem" alt="@produto.Nome" />
+
+                    <p>@produto.Nome</p>
+
+                </div>
+
+            </Template>
+
+        </Carousel>
+
+        <Carousel Items="@Produtos" Color="true" IsInfinite="true">
+
+            <Template Context="produto">
+
+                <div class="carousel-item">
+
+                    <img src="@produto.Imagem" alt="@produto.Nome" />
+
+                    <p>@produto.Nome</p>
+
+                </div>
+
+            </Template>
+
+        </Carousel>
+
+        @code {
+                
+            public record Produto(string Nome, string Imagem);
+
+            List<Produto> Produtos = new()
+            {
+                new("Sushi Salmão", "images/download5.jpeg"),
+                new("Temaki", "images/download5.jpeg"),
+                new("Yakissoba", "images/download5.jpeg"),
+                new("Urumaki", "images/download5.jpeg"),
+                new("RobaruMiaMoto", "images/download5.jpeg"),
+            };
+      }   
 
     </div>
 

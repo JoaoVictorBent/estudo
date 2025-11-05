@@ -1,4 +1,6 @@
-﻿*{
+﻿/* customização geral */
+
+*{
 
     padding: 0rem;
 
@@ -8,11 +10,348 @@
 
 }
 
-.body {
+    /* estrutura */
 
-    height:90vh;
+    .main-container {
 
+        position: relative;
+    
+        width: 100vw;
+
+        height: 100vh;
+
+        overflow-x: hidden;
+
+        overflow-y: auto;
+
+    }
+
+        /* Capa de fundo */
+        
+        .capa {
+
+            height: 30vh;
+
+            width: 100vw;
+
+            object-fit: cover;
+
+        }
+
+        /* Avatar circular centralizado */
+        
+        .avatar {
+
+            position: absolute;
+
+            top: 25vh;
+
+            left: 50vw;
+
+            transform: translate(-50%, -50%);
+
+            height: 10vh;
+
+            object-fit: cover;
+
+            aspect-ratio: 1 / 1; 
+
+            border-radius: 50%;
+
+            z-index: 2;
+
+        }
+
+        /* body */
+
+        .body-home {
+
+            justify-content:center;
+
+            position: absolute;
+
+            top: 25vh;
+
+            width: 100vw;
+
+            min-height: 65vh;
+
+            background: white;
+
+            border-top-left-radius: 3rem;
+
+            border-top-right-radius: 3rem;
+
+            z-index: 1;
+
+        }
+
+            /* nome do restaurante */
+
+            h1 {
+
+                position: absolute;
+
+                top: 6vh;
+
+                font-size:3.5vh;
+
+                left: 50vw;
+
+                transform: translateX(-50%);
+
+                width:40vw;
+
+                text-align: center;
+
+            }
+
+            /* formatação geral das linhas de informações abaixo do avatar */
+
+            .row1, .row2, .row3, .row4{
+
+                height:5vh;
+
+                display:flex;
+
+                flex-direction:row;
+
+                justify-content:center;
+
+                align-items:center;
+
+            }
+
+            /* formatação geral dos icones que nao precisam de atençao especial */
+
+            .icon {
+
+                margin-right: 1vw;
+                
+                height: 4vh;
+                
+                object-fit: cover;
+
+            }
+
+            /* formatação geral dos paragrafos */
+
+            p {
+                
+                font-style: oblique;
+                
+                font-size: 2vh;
+
+            }
+
+            /* linha de pedidos e entrega */
+
+            .row1{
+
+                position:absolute;
+
+                transform:translateX(-50%);
+
+                left:49.1vw;
+
+                top:16vh;
+
+                width:95vw;
+
+            }
+
+                /* primeira linha mas a parte de pedido minimo */
+
+                .row1-1{
+
+                    display:flex;
+    
+                    justify-content:flex-end;
+
+                    margin-right:1.5vw;
+
+                    align-content:center;
+
+                    align-items:center;
+
+                    width:45vw;
+
+                }
+
+                /* traço que separa o pedido minimo e a entrega */
+
+                .traco {
+
+                    display:block;
+
+                    width: 0.3vw;
+
+                    height: 4.5vh;
+
+                    background-color: black;
+
+                }
+
+                /* primeira linha tambem, mas a parte de entrega */
+
+                .row1-2 {
+
+                    display: flex;
+
+                    margin-left: 1.5vw;
+
+                    align-content: center;
+
+                    align-items: center;
+
+                    width: 43vw;
+
+                }
+
+                /* somente para a formatação da palavra gratis */
+
+                .gratis {
+
+                    color: green;
+
+                }
+
+            /* linha do pin */
+
+            .row2 {
+
+                position: absolute;
+
+                width:80vw;
+
+                top: 21vh;
+
+                left: 49.3vw;
+
+                transform: translate(-50%);
+
+            }
+
+            /* linha das avaliações */
+
+            .row3 {
+
+                position: absolute;
+
+                top: 26vh;
+
+                left: 50vw;
+
+                transform: translate(-50%);
+
+            }
+
+            /* linha da camera e da info */
+
+            .row4 {
+
+                position: absolute;
+
+                top: 11vh;
+
+                left: 50vw;
+
+                transform: translate(-50%);
+
+                width: 22vw;
+
+            }
+
+            /* formatação compartilhada do icon camera e icon info */
+
+            .icon-camera, .icon-info {
+
+                border-radius: 50%;
+
+                border: 2px solid black;
+
+                aspect-ratio: 1/1;
+
+                height:4vh;
+
+                object-fit: cover;
+
+            }
+
+                /* personalizando o icon da info */
+
+                .icon-info {
+
+                    border: none;
+
+                    margin-left:10vw;
+
+                }
+
+/* CONTAINER: A Janela de visualização */
+.carousel-container {
+    width: 100vw;
+    height: 30vh;
+    background-color: white;
+    /* CORREÇÃO: Usar 'overflow-x' para scroll horizontal */
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    /* CORREÇÃO: Remove justify-content/align-items, eles atrapalham o scroll */
+    /* Remove 'display: flex' e 'flex-direction: column' daqui */
+    /* TRUQUE PARA O EFEITO 'PEEK' (Mostrar as pontas dos itens) */
+    /* O padding permite que o primeiro e o último item sejam centralizados
+       e que o item seguinte/anterior apareça nas bordas. */
+    /* Ajuste o valor 20%vw para controlar quanto do item lateral aparece. */
+    padding: 0 10vw;
+    box-sizing: border-box; /* Garante que o padding não aumente o width total */
+    /* Oculta a barra de rolagem (opcional, para um visual mais limpo) */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
+    .carousel-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, BlazorWebView */
+    }
 
+/* CAROUSEL: O wrapper que contém todos os itens */
+.carousel {
+    /* CORREÇÃO: O wrapper deve ser flex horizontal e não deve quebrar linha */
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap; /* CRUCIAL: Impede que os itens quebrem linha */
+    align-items: center;
+    height: 100%; /* Ocupa a altura do container */
+}
 
+/* ITEM: Os cards */
+.carousel-item {
+    /* FIXO: Defina a largura para que o scroll-snap funcione */
+    /* (100vw - 2 * 10vw de padding - 2 * 4vw de gap) / 1 item central */
+    /* Vamos tentar 60vw de width para que 20vw sejam 'peek' em cada lado */
+    width: 60vw;
+    height: 20vh;
+    margin: 2vw;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    scroll-snap-align: center; /* Mantido, é essencial */
+    /* Para a animação do loop: precisamos de transição, mas o 'transform' é para
+       o efeito hover, não para o scroll, então está ok aqui. */
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Impede que o item encolha */
+}
+
+    /* Estilos Específicos para o seu .carousel-item img e p... (mantidos) */
+    .carousel-item img {
+        width: 15vh;
+        height: auto;
+        border-radius: 0.8rem;
+        object-fit: cover;
+    }
+
+    .carousel-item p {
+        font-size: clamp(1rem, 2vw, 1.4rem);
+        text-align: center;
+        margin-top: 1vh;
+    }

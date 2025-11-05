@@ -1,0 +1,89 @@
+﻿@typeparam TItem
+@inject IJSRuntime JSRuntime
+
+<!--
+Este é o componente Carrossel.
+Ele recebe os Itens e o Template.
+O _containerRef é a referência do DOM que passaremos para o JavaScript.
+-->
+<div @ref="_containerRef" class="carousel-container" id="@_carouselId" style="@(Color ? "background-color: gray;" : "" ) @(First ? "margin-top: 33vh;" : "")">
+    <div class="carousel">
+        <!--
+        Ele itera sobre _displayItems, que contém os
+        itens reais + os clones (se IsInfinite for verdadeiro).
+        -->
+        @foreach (var item in _displayItems)
+        {
+            @Template(item)
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public List<TItem> Items { get; set; } = new();
+
+    [Parameter]
+    public RenderFragment<TItem> Template { get; set; }
+
+    [Parameter]
+    public bool Color { get; set; } = false;
+
+    [Parameter]
+    public bool First { get; set; } = false;
+
+    [Parameter]
+    public bool IsInfinite { get; set; } = false;
+
+    // Referência ao elemento <div> do container para o JS
+    private ElementReference _containerRef;
+    
+    // ID Único para este carrossel
+    private string _carouselId = $"carousel-{Guid.NewGuid().ToString("N").Substring(0, 8)}";
+
+    // Lista interna que vai guardar os itens reais + clones
+    private List<TItem> _displayItems = new();
+    private int _realItemsCount = 0;
+
+    // 1. Quando os parâmetros (Itens) são definidos
+    protected override void OnParametersSet()
+    {
+        _realItemsCount = Items?.Count ?? 0;
+        _displayItems.Clear();
+
+        if (_realItemsCount == 0) return;
+
+        // Se for infinito E tiver mais de 2 itens (necessário para clonar)
+        if (IsInfinite && _realItemsCount > 2)
+        {
+            // Adiciona os 2 últimos itens como clones no INÍCIO
+            _displayItems.Add(Items[^2]); // Penúltimo item
+            _displayItems.Add(Items[^1]); // Último item
+
+            // Adiciona os itens reais
+            _displayItems.AddRange(Items);
+
+            // Adiciona os 2 primeiros itens como clones no FIM
+            _displayItems.Add(Items[0]); // Primeiro item
+            _displayItems.Add(Items[1]); // Segundo item
+        }
+        else
+        {
+            // Se não for infinito, apenas mostra os itens
+            _displayItems.AddRange(Items);
+        }
+    }
+
+    // 2. DEPOIS que o componente é renderizado no HTML
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Só executa na primeira renderização, se for infinito e tiver itens
+        if (firstRender && IsInfinite && _realItemsCount > 2)
+        {
+            // 3. ESTA É A MÁGICA:
+            // Chama a função JavaScript global "initInfiniteScroll" e passa
+            // a referência do container e o número REAL de itens.
+            await JSRuntime.InvokeVoidAsync("initInfiniteScroll", _containerRef, _realItemsCount);
+        }
+    }
+}
